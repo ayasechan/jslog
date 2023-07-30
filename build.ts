@@ -6,7 +6,7 @@ const config: {buildopts: esbuild.BuildOptions} = {
     outfile: "dist/index.js",
     sourcemap: "inline",
     bundle: true,
-    format: 'cjs',
+    format: 'esm',
   }
 }
 

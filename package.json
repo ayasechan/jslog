@@ -1,6 +1,6 @@
 {
-  "name": "jslog",
-  "version": "1.0.0",
+  "name": "@ayasechan/jslog",
+  "version": "0.1.1",
   "description": "",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
