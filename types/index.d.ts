@@ -2,11 +2,10 @@ export interface Writer {
     write(ctx: Record<string, unknown>): void;
 }
 export declare class Logger {
-    private history;
-    private mod;
-    private baseCtx;
+    #private;
     writer: Writer | null;
     constructor(mod: string, baseCtx: Record<string, unknown>);
+    get mod(): string;
     _print: (ctx: Record<string, unknown>) => void;
     debug: (msg: string, ctx: Record<string, unknown>) => void;
     warn: (msg: string, ctx: Record<string, unknown>) => void;

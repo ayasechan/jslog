@@ -18,19 +18,22 @@ const consoleWriter: Writer = {
   },
 };
 export class Logger {
-  private history: Record<string, unknown>[];
-  private mod: string;
-  private baseCtx: Record<string, unknown>;
+  #history: Record<string, unknown>[];
+  #mod: string;
+  #baseCtx: Record<string, unknown>;
   writer: Writer | null;
   constructor(mod: string, baseCtx: Record<string, unknown>) {
-    this.history = [];
-    this.mod = mod;
-    this.baseCtx = baseCtx;
+    this.#history = [];
+    this.#mod = mod;
+    this.#baseCtx = baseCtx;
     this.writer = null;
   }
+  get mod(){
+    return this.#mod
+  }
   _print = (ctx: Record<string, unknown>) => {
-    ctx = { mod: ctx.mod ?? this.mod, ...this.baseCtx, ...ctx };
-    this.history.push(ctx);
+    ctx = { mod: ctx.mod ?? this.#mod, ...this.#baseCtx, ...ctx };
+    this.#history.push(ctx);
     const writeFn = this.writer?.write ?? consoleWriter.write;
     writeFn(ctx);
   };
@@ -47,11 +50,11 @@ export class Logger {
     this._print({ msg, lvl: "error", ...ctx });
   };
   child = (ctx: Record<string, unknown>) => {
-    const l = new Logger(this.mod, { ...this.baseCtx, ...ctx });
+    const l = new Logger(this.#mod, { ...this.#baseCtx, ...ctx });
     l.writer = this.writer;
     return l;
   };
   dump = () => {
-    return [...this.history];
+    return [...this.#history];
   };
 }
