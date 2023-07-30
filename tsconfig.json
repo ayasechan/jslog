@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"] ,
+    "lib": ["ESNext", "DOM"],
     "module": "ESNext",
     "target": "ES6",
-    "moduleResolution": "node" ,
+    "moduleResolution": "Node",
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": false
   },
   // "include": [],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }
