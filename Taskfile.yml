@@ -20,7 +20,7 @@ tasks:
   build-types:
     desc: build project types
     cmds:
-      - npx tsc src/index.ts -t es6 --declaration --emitDeclarationOnly --outDir types
+      - npx tsc -p tsconfig.types.json
 
   run:
     desc: run project

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "declarationDir": "types",
+    "declaration": true
+  },
+  "extends": "./tsconfig",
+  "include": ["src"],
+  "exclude": ["**/*.test.ts", "**/*.mock.ts", "node_modules"]
+}
