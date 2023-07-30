@@ -4,13 +4,17 @@ export interface Writer {
 
 const consoleWriter: Writer = {
   write: (ctx: Record<string, unknown>) => {
-    const buf = [];
-    for (const [k, v] of Object.entries(ctx)) {
-      buf.push(`%c${k}%c=%c${JSON.stringify(v)}`);
+    if (typeof window === "undefined") {
+      console.log(JSON.stringify(ctx));
+    } else {
+      const buf = [];
+      for (const [k, v] of Object.entries(ctx)) {
+        buf.push(`%c${k}%c=%c${JSON.stringify(v)}`);
+      }
+      const baseColors = ["color: green", "color: black", "color: orangered"];
+      const colors = buf.reduce<string[]>((pre) => [...pre, ...baseColors], []);
+      console.log(buf.join(" "), ...colors);
     }
-    const baseColors = ["color: green", "color: black", "color: orangered"];
-    const colors = buf.reduce<string[]>((pre) => [...pre, ...baseColors], []);
-    console.log(buf.join(" "), ...colors);
   },
 };
 export class Logger {
