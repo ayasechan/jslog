@@ -17,6 +17,11 @@ tasks:
     cmds:
       - npx esbuild build.ts | node --input-type=module -
 
+  build-types:
+    desc: build project types
+    cmds:
+      - npx tsc src/index.ts --declaration --emitDeclarationOnly --outDir types
+
   run:
     desc: run project
     cmds:
