@@ -1,0 +1,38 @@
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task -l
+    silent: true
+
+  dev:
+    desc: start dev mode
+    cmds:
+      - npx esbuild build.ts | DEV=1 node --input-type=module -
+
+  build:
+    desc: build project
+    aliases: [b]
+    cmds:
+      - npx esbuild build.ts | node --input-type=module -
+
+  run:
+    desc: run project
+    cmds:
+      - node dist/index.js
+
+  test:
+    desc: test project
+    cmds:
+      - npx jest
+
+  fmt:
+    desc: fmt code
+    cmds:
+      - npx prettier -w src
+
+  lint:
+    desc: lint project
+    cmds:
+      - npx eslint --fix src
